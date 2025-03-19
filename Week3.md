@@ -54,7 +54,6 @@ import java.util.Scanner;
 public class Study{
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner scanner = new Scanner(System.in);
 		
 		System.out.print("성적를 입력하세요 : ");
