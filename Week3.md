@@ -102,3 +102,76 @@ public class Study {
 }
 
 ```
+#합격 유무 찾기 ver.2 / 중첩 조건문문
+```java
+import java.util.Scanner;
+
+public class Study{
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("성적를 입력하세요 : ");
+		int score = scanner.nextInt();
+		
+		System.out.print("학년를 입력하세요 : ");
+		int year = scanner.nextInt();
+		
+		if(score < 60)
+			System.out.println("불합격입니다!");
+		else
+		{
+			if(year != 4)
+				System.out.println("합격입니다!");
+			else if(score >= 70)
+				System.out.println("합격입니다!");
+			else
+				System.out.println("불합격입니다!");
+		}
+		
+		scanner.close();
+	}
+}
+```
+#학점매기기 ver2 / switch
+```java
+import java.util.Scanner;
+
+public class Study{
+
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		
+		System.out.print("성적를 입력하세요 : ");
+		char grade;
+		int score = scanner.nextInt();
+		
+		switch(score/10)
+		{
+			case 10:
+			case 9:
+				grade = 'A';
+				break;
+			case 8:
+				grade = 'B';
+				break;
+			case 7:
+				grade = 'C';
+				break;
+			case 6:
+				grade = 'D';
+				break;
+			default:
+				grade = 'F';
+		}
+		
+		System.out.println("학점은 " + grade + "입니다!");
+		
+		scanner.close();
+	}
+}
+```
+#
+```java
+
+```
