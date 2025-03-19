@@ -77,18 +77,7 @@ public class Study{
 }
 ```
 #주민등록번호 검사기
-```java
-import java.util.Scanner;
-
-public class Study {
-
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		
-		System.out.print("주민등록번호를 입력하세요 : ");
-		String id = scanner.nextLine();
-		
-		char genderCode = id.charAt(7); // charAt(n)은 문자열에서 n째 문자를 가져오는 string 클래스의 메서드함수이다.
+```java번째 문자를 가져오는 string 클래스의 메서드함수이다.
 		
 		if(genderCode > '5' || genderCode < '1') // 연산 횟수를 줄이기 위해 오류부터 제거 후에 성별비교하기
 			System.out.println("잘못된 주민등록번호입니다.");
