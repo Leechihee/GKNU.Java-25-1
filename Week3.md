@@ -146,7 +146,7 @@ public class Study{
 		char grade;
 		int score = scanner.nextInt();
 		
-		switch(score/10)
+		switch(score/10) // 잘 쓰이지는 않지만 조건문의 또 다른 형태이며 if/elseif/else 구문과 똑같은 의미를 지녔다.
 		{
 			case 10:
 			case 9:
@@ -170,8 +170,4 @@ public class Study{
 		scanner.close();
 	}
 }
-```
-#
-```java
-
 ```
