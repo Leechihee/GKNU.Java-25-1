@@ -1,4 +1,4 @@
-#합격 유무 찾기
+# 합격 유무 찾기
 ```java
 import java.util.Scanner; // c++에서는 입력이 쉽지만 java에서는 다소 어렵다.
 // c++에서도 헤더를 사용하여 입출력을 하는 것과 비슷하듯 java에서도 util 안에 있는 Scanner라는 클래스를 이용하여 입력을 받는다.
@@ -25,7 +25,7 @@ public class Hello {
 
 ```
 
-#3의 배수 유무 찾기
+# 3의 배수 유무 찾기
 ```java
 import java.util.Scanner;
 
@@ -47,7 +47,7 @@ public class Study {
 }
 ```
 
-#등급 나누기
+# 등급 나누기
 ```java
 import java.util.Scanner;
 
@@ -76,7 +76,7 @@ public class Study{
 	}
 }
 ```
-#주민등록번호 검사기
+# 주민등록번호 검사기
 ```java
 import java.util.Scanner;
 
@@ -102,7 +102,7 @@ public class Study {
 }
 
 ```
-#합격 유무 찾기 ver.2 / 중첩 조건문문
+# 합격 유무 찾기 ver.2 / 중첩 조건문문
 ```java
 import java.util.Scanner;
 
@@ -133,7 +133,7 @@ public class Study{
 	}
 }
 ```
-#학점매기기 ver2 / switch
+# 학점매기기 ver2 / switch
 ```java
 import java.util.Scanner;
 
