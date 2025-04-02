@@ -11,7 +11,6 @@ public class Study {
     }
 }
 ```
-
 # 구구단
 ```java
 public class Study {
@@ -25,4 +24,54 @@ public class Study {
         }
     }
 }
+```
+# 배열 실습
+```java
+public class Study {
+    public static void main(String[] args) {
+    	int array[] = new int[5];
+    	array[0] = 5;
+    	array[1] = 3;
+    	array[2] = -10;
+    	array[3] = 113;
+    	array[4] = -130;
+    	
+    	System.out.println(array[4]);
+    	
+    	int sum = 0;
+    	for(int i = 0;i<5;i++)
+    	{
+    		System.out.println(array[i]);
+    		sum += array[i];
+    	}
+    	System.out.println("Sum : " + sum);
+    	int max = 0;
+    	for(int i = 0;i<5;i++)
+    	{
+    		if(array[i]>max)
+    			max = array[i];
+    	}
+    	System.out.println("Max : " + max);
+    	System.out.println("Arg : " + sum/5);
+    }
+}
+```
+# 최대값 찾기
+```java
+public class Study {
+    public static void main(String[] args) {
+    	int intArray[] = {7,3,10,2,6};
+    	int max = 0;
+    	for(int i = 0;i<5;i++)
+    	{
+    		if(intArray[i]>max)
+    			max = intArray[i];
+    	}
+    	System.out.println(max);
+    }
+}
+```
+# 
+```java
+
 ```
