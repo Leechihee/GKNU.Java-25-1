@@ -4,7 +4,7 @@ public class Circle {
 	double radius;
 	String name;
 	
-	Circle() // defualt constructor
+	Circle() // default constructor
 	{
 		
 	}
@@ -53,7 +53,7 @@ public class Ractangle {
 	
 	public void setWidth(int inputWidth)
 	{
-		width = inputWidth; // this 키워드로 지정할 수도 있다. this.width = inputWidth;
+		width = inputWidth; // this 키워드로 객체 데이터를 지정할 수도 있다. this.width = inputWidth;
 	}
 	
 	public void setHeight(int inputHeight)
@@ -85,19 +85,19 @@ public class Ractangle {
 
 }
 ```
-# 생성자 선언
+# Circle Class / 생성자 선언
 ```java
 public class Circle {
 	double radius;
 	String name;
 	
-	public Circle() // constructor
+	public Circle() // default constructor
 	{
 		radius = 1;
 		name = "NONE";
 	}
 	
-	public Circle(double r, String n)
+	public Circle(double r, String n) // constructor overloading
 	{
 		radius = r;
 		name = n;
@@ -107,6 +107,7 @@ public class Circle {
 	{
 		return 3.14 * radius * radius;
 	}
+
 	public static void main(String[] args) {
 		Circle pizza = new Circle(10,"반올림피자"); // int, String으로 매개변수를 받는 생성자로 객체 생성
 		System.out.println("매개변수로 객체 생성");
@@ -119,6 +120,7 @@ public class Circle {
 		System.out.println(donut.name);
 		System.out.println(donut.radius);
 		System.out.println(donut.getArea());
+
 		donut.name = "도넛"; // private 변수가 아니기 때문에 외부에서 수정 가능
 		donut.radius = 4;
 		System.out.println("객체 정보 수정 후");
@@ -128,5 +130,32 @@ public class Circle {
 	}
 
 }
+```
+# Book Class / Constructor Overloading, this reference, Garbage Collector
+```java
+public class Book {
+    String title;
+    String author;
 
+    public Book(String title){ // 생성자가 하나라도 선언이 되면 기본 생성자는 생성하지않는다.
+        this.title = title; // this 키워드는 객체 자기 자신을 가르키는 reference이다. 객체 데이터변수와 매개변수를 구분하기위해 쓰인다.
+        author = "NONE";
+    }
+
+    public Book(String title, String author){
+        this.title = title;
+        this.author = author;
+    }
+
+    public static void main(String[] args)
+    {
+        Book littlePrince = new Book("어린왕자", "생텍쥐페리"); // 할당된 객체 메모리를 프로그램에서 자동으로 반납함.
+        Book loveStory = new Book("춘향전");
+        System.out.println(littlePrince.title + " " + littlePrince.author);
+        System.out.println(loveStory.title + " " + loveStory.author);
+        
+        loveStory = littlePrince; // loveStory를 가르키던 레퍼런스가 littlePrince를 가르키게 되면서 기존 가르키는 객체의 레퍼런스가 없어짐.
+        // 이것을 가비지라 하고 자신을 가르키는 reference가 하나도 없는 객체를 뜻하며 메모리가 낭비되기때문에 가비지 컬렉터가 자동으로 메모리를 반납함.
+    }
+}
 ```
