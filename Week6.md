@@ -155,7 +155,7 @@ public class Book {
         System.out.println(loveStory.title + " " + loveStory.author);
         
         loveStory = littlePrince; // loveStory를 가르키던 레퍼런스가 littlePrince를 가르키게 되면서 기존 가르키는 객체의 레퍼런스가 없어짐.
-        // 이것을 가비지라 하고 자신을 가르키는 reference가 하나도 없는 객체를 뜻하며 메모리가 낭비되기때문에 가비지 컬렉터가 자동으로 메모리를 반납함.
+        // 이것을 가비지이며 자신을 가르키는 reference가 하나도 없는 객체를 뜻한다. 메모리가 낭비되기때문에 가비지 컬렉터가 자동으로 메모리를 반납함.
     }
 }
 ```
