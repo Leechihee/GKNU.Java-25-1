@@ -29,7 +29,7 @@ public class ContentPaneEx extends JFrame {
         // 레이아웃 만들기
         Container contentPane = getContentPane();
         contentPane.setBackground(Color.ORANGE);
-        contentPane.setLayout(new FlowLayout());
+        contentPane.setLayout(new FlowLayout()); // FlowLayout(align, hgap, vgap);
 
         //만든 레이아웃에 넣을 콘텐츠 삽입
         contentPane.add(new JButton("OK")); // 버튼을 만들고 OK라는 내용을 넣는다
@@ -76,6 +76,66 @@ public class JFrameTest extends JFrame {
 
     public static void main(String[] args) {
         new JFrameTest();
+    }
+}
+```
+# BorderLayout 실습
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class BorderLayoutEx extends JFrame {
+    public BorderLayoutEx() {
+        setTitle("Boarder Layout Example");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        Container c = getContentPane();
+
+        c.setLayout(new BorderLayout(30,20)); BorderLayout(hgap, vgap)
+        c.add(new JButton("Calculate"), BorderLayout.CENTER); // 중앙위치
+        c.add(new JButton("add"), BorderLayout.NORTH); // 북쪽 위치
+        c.add(new JButton("sub"),BorderLayout.SOUTH); // 남쪽 위치
+        c.add(new JButton("mul"),BorderLayout.EAST); // 동쪽 위치
+        c.add(new JButton("div"),BorderLayout.WEST); // 서쪽 위치
+
+        setSize(300,200);
+        setVisible(true);
+    }
+    public static void main(String[] args) {
+        new BorderLayoutEx();
+    }
+}
+```
+# GridLayout 실습 / 회원가입 폼
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class GridLayoutEx extends JFrame {
+    GridLayoutEx()
+    {
+        setTitle("Grid Layout");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        GridLayout grid = new GridLayout(4,2);
+        grid.setVgap(5);
+
+        Container c = getContentPane();
+        c.setLayout(grid);
+        c.add(new JLabel(" 이름"));
+        c.add(new JTextField(""));
+        c.add(new JLabel(" 학번"));
+        c.add(new JTextField(""));
+        c.add(new JLabel(" 학과"));
+        c.add(new JTextField(""));
+        c.add(new JLabel(" 과목"));
+        c.add(new JTextField(""));
+
+        setSize(300,200);
+        setVisible(true);
+    }
+    public static void main(String[] args) {
+        new GridLayoutEx();
     }
 }
 ```
