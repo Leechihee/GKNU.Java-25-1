@@ -1,4 +1,4 @@
-# indepClassListener
+# indepClassListener / ActionEventClass 외부 선언
 ```java
 import java.awt.*;
 import javax.swing.*;
@@ -43,7 +43,7 @@ class MyActionListener implements ActionListener // interface이므로 implement
     }
 }
 ```
-# InnerClassListener
+# InnerClassListener / ActionEventClass 내부 선언
 ```java
 import java.awt.*;
 import javax.swing.*;
@@ -71,7 +71,7 @@ public class InnerClassListener extends JFrame
         new InnerClassListener();
     }
 
-    // 클래스 외부로 작성하는 것이 아닌 내부클래스로 다른 클래스가 접근이 불가
+    // 클래스 외부로 작성하는 것이 아닌 내부클래스 private 접근지정자로 선언하여 다른 클래스가 접근 불가
     private class MyActionListener implements ActionListener
     {
         public void actionPerformed(ActionEvent e)
@@ -84,5 +84,42 @@ public class InnerClassListener extends JFrame
             InnerClassListener.this.setTitle(b.getText());
         }
     }
+}
+```
+# AnonymoutClassListener / ActionListener 익명 선언
+```java
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class AnonymousClassListener extends JFrame {
+    public AnonymousClassListener() {
+        setTitle("Action 이벤트 리스너 작성");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        Container c = getContentPane();
+        c.setLayout(new FlowLayout());
+
+        JButton btn = new JButton("Action");
+        c.add(btn);
+
+        // 익명으로 선언하여 해당 함수가 실행될 때 객체가 생성되어 사용하고 함수가 종료될 때 소멸하는 방식이다.
+        // 코드를 재사용하지 않으면서 주로 사용하지 않는 기능일 때 사용한다.
+        btn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JButton b = (JButton)e.getSource();
+                if(b.getText().equals("Action"))
+                    b.setText("액션");
+                else
+                    b.setText("Action");
+                setTitle(b.getText());
+            }
+        });
+        setSize(350, 150);
+        setVisible(true);
+    }
+    public static void main(String [] args) {
+        new AnonymousClassListener();
+        }
 }
 ```
