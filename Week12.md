@@ -104,7 +104,7 @@ public class AnonymousClassListener extends JFrame {
         c.add(btn);
 
         // 익명으로 선언하여 해당 함수가 실행될 때 객체가 생성되어 사용하고 함수가 종료될 때 소멸하는 방식이다.
-        // 코드를 재사용하지 않으면서 주로 사용하지 않는 기능일 때 사용한다.
+        // 코드를 재사용하지 않으면서 자주 사용하지 않는 기능일 때 사용한다.
         btn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 JButton b = (JButton)e.getSource();
@@ -121,5 +121,109 @@ public class AnonymousClassListener extends JFrame {
     public static void main(String [] args) {
         new AnonymousClassListener();
         }
+}
+```
+# MouseListenerClass / MouseEvent 처리
+```java
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class MouseListenerEx extends JFrame
+{
+    // 텍스트를 private로 선언하여 클래스 내부에서만 사용할 수 있게 함
+    private JLabel lb = new JLabel("HELLO");
+
+    public MouseListenerEx()
+    {
+        setTitle("Mouse Event Listener EX");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container c = getContentPane();
+        // Container 구역에 MouseListener 객체를 선언하여 해당 구역 내의 마우스 이벤트를 처리
+        c.addMouseListener(new MyMouseListener());
+
+        c.setLayout(null); // 구역이 있으면 텍스트의 움직임이 제한되므로 null
+        lb.setSize(100,20); // 텍스트 크기 설정
+        lb.setLocation(30,30); // 텍스트가 보일 지점 설정
+        c.add(lb); // Container에 텍스트 추가
+        setSize(500,500);
+        setVisible(true);
+    }
+
+    // 내부 priavate 클래스로 선언
+    private class MyMouseListener implements MouseListener
+    {
+        @Override // 재정의
+        // 마우스 눌렀을 때
+        public void mousePressed(MouseEvent e) {
+            int x = e.getX(); // 매개변수로 받은 MouseEvent의 x 값 반환
+            int y = e.getY(); // 매개변수로 받은 MouseEvent의 y 값 반환
+            lb.setText("(" + x + ", " + y + ")");
+            lb.setLocation(x, y); // 위 코드에서 받은 x, y 값으로 텍스트 위치 재설정
+        }
+
+        // MouseListener는 interface이므로 해당 interface 안에 선언된 함수들을 모두 재정의해줘야함.
+        // 하지만 이 코드에선 mousePressed만 사용하므로 재정의를 하되 구현은 하지 않는다.
+        public void mouseReleased(MouseEvent e) {} // 마우스를 누르고 땠을 때
+        public void mouseClicked(MouseEvent e) {} 
+        public void mouseEntered(MouseEvent e) {}
+        public void mouseExited(MouseEvent e) {}
+    }
+
+    static public void main(String[] args)
+    {
+        new MouseListenerEx();
+    }
+}
+```
+# MouseAdapterClass / 어뎁더 클래스
+```java
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class MouseAdapterEx extends JFrame
+{
+    private JLabel lb = new JLabel("HELLO");
+
+    public MouseAdapterEx()
+    {
+        setTitle("Mouse Event Listener EX");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container c = getContentPane();
+        c.addMouseListener(new MyMouseListener());
+
+        c.setLayout(null);
+        lb.setSize(100,20);
+        lb.setLocation(30,30);
+        c.add(lb);
+        setSize(500,500);
+        setVisible(true);
+    }
+
+    // MouseAdapter 클래스는 각종 MouseEvent interface를 모은 집합체이며
+    // 기본적으로 구현이 없는 재정의를 해두었기 때문에 내가 필요한 함수만 재정의하여 사용하면 된다.
+    private class MyMouseListener extends MouseAdapter
+    {
+        public void mousePressed(MouseEvent e) {
+            int x = e.getX();
+            int y = e.getY();
+            lb.setText("(" + x + ", " + y + ")");
+            lb.setLocation(x, y);
+        }
+
+        // interface로 상속 받을 때는 모든 함수가 추상 함수이므로 재정의를 무조권 해줘야하지만
+        // MouseAdapter로 상속받을 때는 MouseAdapter 클래스 안에 구현 없는 재정의가 되어있고
+        // 내가 사용할 이벤트만 재정의하는 방식으로 사용할 수 있다. 코드 간결성과 유지보수가 증가한다.
+        /*public void mouseReleased(MouseEvent e) {}
+        public void mouseClicked(MouseEvent e) {}
+        public void mouseEntered(MouseEvent e) {}
+        public void mouseExited(MouseEvent e) {}*/
+    }
+
+    static public void main(String[] args)
+    {
+        new MouseAdapterEx();
+    }
 }
 ```
