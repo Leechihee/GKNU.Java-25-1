@@ -130,3 +130,88 @@ public class moveHello extends JFrame {
     }
 }
 ```
+# 
+```java
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+
+public class LableZoomEx extends JFrame{
+    private JLabel label;
+    private int labelWidth = 100;
+    private int labelHeight = 50;
+
+    public LableZoomEx(){
+        setTitle("Zoom Ex");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(400, 300);
+
+        Container c = getContentPane();
+        c.setLayout(null);
+        label = new JLabel("Zoom Me!");
+        label.setBounds(150, 100, labelWidth, labelHeight);
+        label.setOpaque(true);
+        label.setBackground(Color.CYAN);
+        c.add(label);
+
+        c.addMouseWheelListener(new MouseWheelListener() {
+            public void mouseWheelMoved(MouseWheelEvent e) {
+                int notches = e.getWheelRotation();
+                int delta = 10;
+
+                if(notches < 0){
+                    labelWidth += delta;
+                    labelHeight += delta;
+                }
+                else if(notches > 0){
+                    labelWidth = Math.max(10, labelWidth-delta);
+                    labelHeight = Math.max(10, labelHeight-delta);
+                }
+
+                label.setBounds(label.getX(), label.getY(), labelWidth, labelHeight);
+                label.setFont(new Font("Arial", Font.PLAIN, Math.max(10, labelHeight/2)));
+            }
+        });
+        setVisible(true);
+    }
+
+    public static void main(String[] args){
+        new LableZoomEx();
+    }
+}
+```
+#
+```java
+import javax.swing.*;
+import java.awt.*;
+
+public class ButomEx extends JFrame {
+    public ButomEx() {
+        setTitle("Butom Ex");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container c = getContentPane();
+        c.setLayout(new FlowLayout());
+
+        ImageIcon nornmalicon = new ImageIcon("./normalIcon.gif");
+        ImageIcon rollovericon = new ImageIcon("./rolloverIcon.gif");
+        ImageIcon pressedicon = new ImageIcon("./pressedIcon.gif");
+
+        JButton btn = new JButton(nornmalicon);
+        btn.setPressedIcon(pressedicon);
+        btn.setRolloverIcon(rollovericon);
+
+        btn.setBorderPainted(false);
+        btn.setContentAreaFilled(false);
+        btn.setFocusPainted(false);
+        btn.setOpaque(false);
+
+        c.add(btn);
+        setSize(250, 150);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new ButomEx();
+    }
+}
+```
