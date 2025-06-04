@@ -130,7 +130,7 @@ public class moveHello extends JFrame {
     }
 }
 ```
-# 
+# 마우스 휠로 텍스트 크기 바꾸기
 ```java
 import java.awt.*;
 import javax.swing.*;
@@ -154,10 +154,11 @@ public class LableZoomEx extends JFrame{
         label.setBackground(Color.CYAN);
         c.add(label);
 
+        // 익명 클래스로 선언하여 이벤트 처리
         c.addMouseWheelListener(new MouseWheelListener() {
             public void mouseWheelMoved(MouseWheelEvent e) {
-                int notches = e.getWheelRotation();
-                int delta = 10;
+                int notches = e.getWheelRotation(); // 휠이 움직였을 때 어느 방향으로 움직였는지 감지함.
+                int delta = 10; // 변화값
 
                 if(notches < 0){
                     labelWidth += delta;
@@ -180,7 +181,7 @@ public class LableZoomEx extends JFrame{
     }
 }
 ```
-#
+# 버튼 컴포넌트에 3가지 상태 이미지 씌우기
 ```java
 import javax.swing.*;
 import java.awt.*;
@@ -192,14 +193,15 @@ public class ButomEx extends JFrame {
         Container c = getContentPane();
         c.setLayout(new FlowLayout());
 
-        ImageIcon nornmalicon = new ImageIcon("./normalIcon.gif");
-        ImageIcon rollovericon = new ImageIcon("./rolloverIcon.gif");
-        ImageIcon pressedicon = new ImageIcon("./pressedIcon.gif");
+        ImageIcon nornmalicon = new ImageIcon("./normalIcon.gif"); // 기본 상태의 이미지
+        ImageIcon rollovericon = new ImageIcon("./rolloverIcon.gif"); // 마우스가 버튼 위에 있을 때의 이미지
+        ImageIcon pressedicon = new ImageIcon("./pressedIcon.gif"); // 마우스가 버튼을 눌렀을 때의 이미지
 
-        JButton btn = new JButton(nornmalicon);
-        btn.setPressedIcon(pressedicon);
-        btn.setRolloverIcon(rollovericon);
+        JButton btn = new JButton(nornmalicon); // normalalicon 이미지 객체를 기본으로 한 버튼 컴포넌트 객체 생성
+        btn.setPressedIcon(pressedicon); // 버튼을 눌렀을 때, pressedicon 이미지 객체로 이미지를 바꾼다.
+        btn.setRolloverIcon(rollovericon); // 버튼 위에 마우스가 있다면 rollovericon 이미지 객체로 이미지를 바꾼다.
 
+        // 버튼 컴포넌트는 사각형 버튼을 띄우는 것이 기본이지만 아래 4줄로 사각형 형태의 버튼을 이미지 모양으로 바꿀 수 있다.
         btn.setBorderPainted(false);
         btn.setContentAreaFilled(false);
         btn.setFocusPainted(false);
