@@ -16,7 +16,9 @@ public class Main extends JFrame {
 
         JPanel top = new JPanel();
         top.setLayout(new FlowLayout(FlowLayout.LEFT));
+        insertButton.addActionListener(new ButtonEventListener());
         top.add(insertButton);
+        deleteButton.addActionListener(new ButtonEventListener());
         top.add(deleteButton);
         top.add(new JLabel("파일 이름 : "));
         top.add(filePath);
@@ -36,12 +38,30 @@ public class Main extends JFrame {
 
     private class ButtonEventListener implements ActionListener
     {
+        private JFileChooser chooser = new JFileChooser(); // 파일을 선택하는 객체
         @Override
         public void actionPerformed(ActionEvent e) {
             JButton b = (JButton)e.getSource();
             if(b.getText().equals("이미지 열기"))
+            {
+                FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif");
+                chooser.setFileFilter(filter);
 
+                int ret = chooser.showOpenDialog(null);
+                if (ret != JFileChooser.APPROVE_OPTION) {
+                    JOptionPane.showMessageDialog(null,"파일을 선택하지 않았습니다.","경고",JOptionPane.INFORMATION_MESSAGE);
+                    return;
+                }
+
+                imageLabel.setIcon(new ImageIcon(chooser.getSelectedFile().getPath()));
+                filePath.setText(chooser.getSelectedFile().getName());
+                pack();
+            }
             else if(b.getText().equals("이미지 삭제"))
+            {
+                imageLabel.setIcon(null);
+                filePath.setText("없음");
+            }
 
         }
     }
