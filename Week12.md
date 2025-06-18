@@ -86,7 +86,7 @@ public class InnerClassListener extends JFrame
     }
 }
 ```
-# AnonymoutClassListener / ActionListener 익명 선언
+# AnonymousClassListener / ActionListener 익명 선언
 ```java
 import java.awt.*;
 import java.awt.event.*;
